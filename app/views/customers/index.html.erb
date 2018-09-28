@@ -2,7 +2,7 @@
 <h1>Listing Customer Details</h1>
  
 <%= link_to 'New Customer', new_customer_path %>
-
+<%= link_to 'home', index_welcome_path(customer) %>
 <table>
   <tr>
     <th>Name</th>
@@ -25,6 +25,7 @@
       <td><%= link_to 'Destroy', customer_path(customer),
               method: :delete,
               data: { confirm: 'Are you sure?' } %></td>
+
     </tr>
   <% end %>
 </table>

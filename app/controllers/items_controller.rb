@@ -1,4 +1,4 @@
-class ItemController < ApplicationController
+class ItemsController < ApplicationController
 	def index
 		@item = Item.all
 	end
@@ -29,7 +29,6 @@ class ItemController < ApplicationController
 			render 'edit'
 		end
 	end
-
 	def destroy
 		@item = Item.find(params[:id])
 		@item.destroy
