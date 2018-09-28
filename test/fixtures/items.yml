@@ -1,7 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  oid: 1
+  ino: 1
+  name: MyString
+  price: 1.5
+  stock: 1
 
 two:
-  oid: 1
+  ino: 1
+  name: MyString
+  price: 1.5
+  stock: 1

@@ -1,0 +1,28 @@
+
+<h1>Listing Item Details</h1>
+ 
+<%= link_to 'New Item', new_item_path %>
+
+<table>
+  <tr>
+    <th>ino</th>
+    <th>name</th>
+    <th>price</th>
+    <th>stock</th>
+    <th></th>
+  </tr>
+ 
+  <% @item.each do |item| %>
+    <tr>
+      <td><%= item.ino %></td>
+      <td><%= item.name %></td>
+      <td><%= item.price %></td>
+      <td><%= item.stock %></td>
+      <td><%= link_to 'Show', item_path(item) %></td>
+      <td><%= link_to 'Edit', edit_item_path(item) %>
+      <td><%= link_to 'Destroy', item_path(item),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
