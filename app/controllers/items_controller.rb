@@ -29,6 +29,15 @@ class ItemsController < ApplicationController
 			render 'edit'
 		end
 	end
+	def modify
+		@item = Item.find(params[:id])
+		#@tmp = Item.find_by_stock(@item)
+		if @item.update_attribute(:stock,"5")
+			redirect_to @item
+		else
+			render 'modify'
+		end
+	end
 	def destroy
 		@item = Item.find(params[:id])
 		@item.destroy
