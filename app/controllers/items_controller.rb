@@ -11,6 +11,9 @@ class ItemsController < ApplicationController
 	def edit
 		@item = Item.find(params[:id])
 	end
+	def modify
+		@item = Item.find(params[:id])
+	end
 	def create
 		@item = Item.new(item_params)
 
@@ -29,7 +32,14 @@ class ItemsController < ApplicationController
 			render 'edit'
 		end
 	end
-	def modify
+	
+	def destroy
+		@item = Item.find(params[:id])
+		@item.destroy
+
+		redirect_to items_path
+	end
+	def modif
 		@item = Item.find(params[:id])
 		#@tmp = Item.find_by_stock(@item)
 		if @item.update_attribute(:stock,"5")
@@ -38,13 +48,6 @@ class ItemsController < ApplicationController
 			render 'modify'
 		end
 	end
-	def destroy
-		@item = Item.find(params[:id])
-		@item.destroy
-
-		redirect_to items_path
-	end
-
 	private
 		def item_params
 			params.require(:item).permit(:ino,:name,:price,:stock)
