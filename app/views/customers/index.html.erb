@@ -9,7 +9,6 @@
     <th>DOB</th>
     <th>Address</th>
     <th>Phone</th>
-    <th>Price</th>
     <th></th>
   </tr>
  
@@ -19,13 +18,12 @@
       <td><%= customer.dob %></td>
       <td><%= customer.address %></td>
       <td><%= customer.phone %></td>
-      <td><%= customer.price %></td>
       <td><%= link_to 'Show', customer_path(customer) %></td>
       <td><%= link_to 'Edit', edit_customer_path(customer) %>
       <td><%= link_to 'Destroy', customer_path(customer),
               method: :delete,
               data: { confirm: 'Are you sure?' } %></td>
-
+      <td><%= link_to 'Add Orders', new_order_path(customer) %>
     </tr>
   <% end %>
 </table>

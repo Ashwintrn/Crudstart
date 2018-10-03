@@ -13,6 +13,7 @@ class ItemsController < ApplicationController
 	end
 	def modify
 		@item = Item.find(params[:id])
+		#@item.increment!('stock',5)
 	end
 	def create
 		@item = Item.new(item_params)
@@ -40,9 +41,11 @@ class ItemsController < ApplicationController
 		redirect_to items_path
 	end
 	def modif
+		@tmp = Item.find_by_stock(params[:id])
 		@item = Item.find(params[:id])
-		#@tmp = Item.find_by_stock(@item)
-		if @item.update_attribute(:stock,"5")
+		@item = @item + @tmp
+		if @item.update_attribute(@item.stock, :stock)
+
 			redirect_to @item
 		else
 			render 'modify'

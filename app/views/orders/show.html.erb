@@ -1,0 +1,16 @@
+<p>
+  <strong>customer id:</strong>
+  <%= @order.customer.name %>
+</p>
+ 
+<p>
+  <strong>items:</strong>
+  <%= @order.item.name %>
+</p>
+
+<p>quantity :</strong>
+  <%= @order.quantity %>
+</p>
+
+<%= link_to 'Back', customers_path %> |
+<%= link_to 'HOME', welcome_index_path %>

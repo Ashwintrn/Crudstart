@@ -1,0 +1,20 @@
+<h1>Listing Order Details</h1>
+ 
+ <%= link_to 'Back', customers_path %>
+<%= link_to 'HOME', welcome_index_path %>
+<table>
+  <tr>
+    <th>item id</th>
+    <th>quantity</th>
+    <th></th>
+  </tr>
+ 
+  <% @order.each do |order| %>
+    <tr>
+      <td><%= order.item_id %></td>
+      <td><%= order.quantity %></td>
+      <td><%= link_to 'Show', order_path(customer) %></td>
+
+    </tr>
+  <% end %>
+</table>
