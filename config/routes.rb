@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'welcome/index'
 	resources :customers, :items
 	get 'items/:id/modify', to: 'items#modify', as: 'modify_item'
+	patch 'items/:id/modif', to: 'items#modif'
 	put 'items/:id', to: 'items#modif'
 	get 'customers/orders', to: 'orders#index', as: 'orders'
 	post 'customers/orders', to: 'orders#create'

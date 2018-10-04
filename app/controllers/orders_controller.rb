@@ -14,7 +14,8 @@ class OrdersController < ApplicationController
 		@order.total_cost = @order.item.price * @order.quantity
 		
 
-		if @order.save!
+		if @order.save
+			byebug
 			redirect_to @order
 		else
 			render 'new'
@@ -24,4 +25,5 @@ class OrdersController < ApplicationController
 		def order_params
 			params.require(:order).permit(:customer_id, :item_id, :quantity)
 		end
+		
 end
