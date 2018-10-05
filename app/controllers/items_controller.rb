@@ -27,9 +27,9 @@ class ItemsController < ApplicationController
 	end
 	def modif
 		#puts " --------------------------------------------------------------------"
-		@tmp = item.stock( params[:id])
 		#byebug
-		@items = Item.find(params[:id])
+		@tmp =  Integer(params[:item][:stock])
+		@item = Item.find(params[:id])
 		if @item.update_attribute(:stock, @item.stock+@tmp)
 			#@item.stock = @items
 			redirect_to @item

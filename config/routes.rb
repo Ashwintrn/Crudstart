@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 	resources :customers, :items
 	get 'items/:id/modify', to: 'items#modify', as: 'modify_item'
 	patch 'items/:id/modif', to: 'items#modif'
-	put 'items/:id', to: 'items#modif'
+	post 'items/:id', to: 'items#modif'
 	get 'customers/orders', to: 'orders#index', as: 'orders'
 	post 'customers/orders', to: 'orders#create'
 	get 'customers/orders/:id/new', to: 'orders#new', as: 'new_order'
