@@ -1,10 +1,5 @@
 class Customer < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
-	validates :name, presence: true,
+	  validates :name, presence: true,
                     length: { minimum: 5 }
-	has_many :orders
-	has_many :items, through: :orders
+    validates :phone, presence: true, length: {is: 10}, numericality: { only_integer: true }
 end

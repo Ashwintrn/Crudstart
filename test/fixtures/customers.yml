@@ -2,16 +2,12 @@
 
 one:
   name: MyString
-  dob: 2018-09-18
+  dob: 2018-10-05
   address: MyString
   phone: 1
-  items: 1
-  price: 1.5
 
 two:
   name: MyString
-  dob: 2018-09-18
+  dob: 2018-10-05
   address: MyString
   phone: 1
-  items: 1
-  price: 1.5
