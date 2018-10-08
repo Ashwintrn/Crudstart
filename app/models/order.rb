@@ -8,7 +8,7 @@ class Order < ApplicationRecord
 
 			#self.errors.add"Stock unavailable ,try with lesser quantity"
 			#validates :stock, numericality: { :greater_than_or_equal_to => 0}
-			self.errors.add(:stock , "Stock unavailable ,try with lesser quantity")
+			self.errors.add(:stock , " unavailable ,try with #{(item.stock).abs} or lesser quantity")
 			return false
 		else	
 			item.save
