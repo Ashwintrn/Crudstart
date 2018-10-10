@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   devise_for :customers
   #devise_for :customers
   get 'welcome/index'
-	resources :customers, :items
+	resources :customers
+	resources :items
 	get 'items/:id/modify', to: 'items#modify', as: 'modify_item'
 	patch 'items/:id/modif', to: 'items#modif'
 	post 'items/:id', to: 'items#modif'
