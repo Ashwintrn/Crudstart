@@ -12,8 +12,8 @@ default: &default
 development:
   <<: *default
   database: Crudstart_development
-  #username: rently
-  #password: rently978*
+  #username: pguser
+  #password: ashwin
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -21,11 +21,11 @@ development:
 test:
   <<: *default
   database: Crudstart_test
-  #username: rently
-  #password: rently978*
+  #username: pguser
+  #password: ashwin
 
 production:
   <<: *default
   database: Crudstart_production
-  #username: rently
-  #password: rently978*
+  #username: pguser
+  #password: ashwin
