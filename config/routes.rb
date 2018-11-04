@@ -1,8 +1,8 @@
 
 Rails.application.routes.draw do
-  devise_for :customers, controllers: { registrations: 'customers/registrations' }
+  devise_for :customers, controllers: { registrations: 'customers/registrations' } 
+  get "customers/sign_up/:id/show", to: 'customers/registrations#show', as: 'show_registration'
   #devise_for :customers
-  get 'welcome/index'
 	resources :customers
 	resources :items
 	get 'items/:id/modify', to: 'items#modify', as: 'modify_item'
