@@ -1,6 +1,10 @@
 
 Rails.application.routes.draw do
   devise_for :customers, controllers: { registrations: 'customers/registrations' }
+  devise_scope :customer do
+  	get 'customers/sign_up/:id/show', to: 'devise/registrations#show', as: 'show_registration'
+  	post 'customers/sign_up/:id/show', to: 'devise/registrations#show'
+  end
   #devise_for :customers
   get 'welcome/index'
 	resources :customers

@@ -1,14 +1,16 @@
 class Customer < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  has_many :orders
+  has_many :items, through: :orders
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   #attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :profile_name
   #before_commit :configure_permitted_parameters, if: :devise_modules?
   #validates :email, presence: true
-  #validates :name, presence: true,
-  #                  length: { minimum: 5 }
-  #validates :phone, presence: true, length: {is: 10}, numericality: { only_integer: true }
+  validates :name, presence: true,
+                    length: { minimum: 5 }
+  validates :phone, presence: true, length: {is: 10}, numericality: { only_integer: true }
 
   #protected
 

@@ -1,0 +1,22 @@
+<p>
+  <strong>Name:</strong>
+  <%=  Customer.find(params[:id]).name %>
+</p>
+ 
+<p>
+  <strong>Date of birth:</strong>
+  <%= Customer.find(params[:id]).dob %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= Customer.find(params[:id]).address %>
+</p>
+
+<p>
+  <strong>Phone number:</strong>
+  <%= Customer.find(params[:id]).phone %>
+</p>
+
+
+<%= link_to 'Back', list_order_path %>

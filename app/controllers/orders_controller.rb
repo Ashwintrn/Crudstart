@@ -10,7 +10,6 @@ class OrdersController < ApplicationController
 		@order = Order.new(:customer_id => params[:id])
 	end
 	def list
-		byebug
 		@customer = Customer.find(params[:id])
 		@tmp = params[:id]
 		#@orde = Order.where(:customer_id => params[:id])

@@ -1,15 +1,11 @@
 <h1> Particular Customer orders</h1>
+
 <p>
-  <strong>Name:</strong>
-  <%= @customer.name %>
-</p>
- 
-<p>
-  <strong>orders:</strong>
+  <strong>ordered item id:</strong>
   <%= @ans %>
 </p>
 
 
 
-<%= link_to 'Back', customers_path %>
-<%= link_to 'HOME', welcome_index_path %>
+<%= link_to 'Add Orders', new_order_path(@customer) %>
+<%= link_to 'view profile', show_registration_path(@customer) %>
