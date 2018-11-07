@@ -12,5 +12,4 @@
   <%= @order.quantity %>
 </p>
 
-<%= link_to 'Back', customers_path %> |
-<%= link_to 'HOME', welcome_index_path %>
+<%= link_to 'Back', list_order_path(current_customer) %>

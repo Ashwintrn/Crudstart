@@ -10,13 +10,14 @@ class OrdersController < ApplicationController
 		@order = Order.new(:customer_id => params[:id])
 	end
 	def list
-		@customer = Customer.find(params[:id])
-		@tmp = params[:id]
+		@customer = current_customer
+		@ans= @customer.orders
+		#@tmp = params[:id]
 		#@orde = Order.where(:customer_id => params[:id])
 		#@ans = @orde.to_a{|o| o.select(:item_id)}
 		#@ans = Order.select(:item_id,:quantity).from(@orde)		
-		@orde= Order.select("item_id").where(":customer_id = ",@tmp)
-		@ans = @ords.to_a.uniq{|o| o.item_id}
+		# @orde= Order.select("item_id").where(":customer_id = ",@tmp)
+		# @ans = @ords.to_a.uniq{|o| o.item_id}
 		
 	end
 	def create

@@ -1,11 +1,31 @@
-<h1> Particular Customer orders</h1>
+<% if customer_signed_in? %>
+	Logged in as <strong><%= current_customer.email %></strong>.
+  <%= link_to 'Edit profile', edit_customer_registration_path, :class => 'navbar-link' %> |
+  <%= link_to "Logout", destroy_customer_session_path, method: :delete, :class => 'navbar-link'  %>
+<% end %>
 
-<p>
-  <strong>ordered item id:</strong>
-  <%= @ans %>
-</p>
+<h3>Your orders</h3>
+<table>
+  <tr>
+    <th>item id</th>
+    <th>item name</th>
+    <th>quantity</th>
+    <th>total_cost</th>
+    <th></th>
+  </tr>
+ 
+  <% @ans.each do |answ| %>
+    <tr>
+      <td><%= answ.item_id %></td>
+      <td><%= Item.find(answ.item_id).name %></td>
+      <td><%= answ.quantity %></td>
+      <td><%= answ.total_cost %></td>
+    </tr>
+    <tr>
 
+    </tr>
+  <% end %>
+</table>
 
-
-<%= link_to 'Add Orders', new_order_path(@customer) %>
-<%= link_to 'view profile', show_registration_path(@customer) %>
+<%= link_to 'Add Orders', new_order_path(current_customer) %>
+<%= link_to 'view profile', show_registration_path(current_customer) %>

@@ -1,6 +1,6 @@
 
 Rails.application.routes.draw do
-  devise_for :customers, controllers: { registrations: 'customers/registrations' }
+  devise_for :customers, controllers: { registrations: 'customers/registrations', sessions: 'customers/sessions' }
   devise_scope :customer do
   	get 'customers/sign_up/:id/show', to: 'devise/registrations#show', as: 'show_registration'
   	post 'customers/sign_up/:id/show', to: 'devise/registrations#show'

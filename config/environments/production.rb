@@ -3,7 +3,16 @@ Rails.application.configure do
 
   # Code is not reloaded between requests.
   config.cache_classes = true
-
+  config.action_mailer.smtp_settings = {
+    :enable_starttls_auto => true,  
+    :address            => 'smtp.gmail.com',
+    :port               => 587,
+    # :tls                  => true,
+  #   :domain             => 'gmail.com', #you can also use google.com
+    :authentication     => "plain" ,
+    :user_name          => 'ashwin@rently.com',
+    :password           => 'rently978*'
+  }
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
   # and those relying on copy on write to perform better.
