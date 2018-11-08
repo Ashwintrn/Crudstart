@@ -67,7 +67,7 @@ class Customers::RegistrationsController < Devise::RegistrationsController
   end
 
   def after_update_path_for(resource)
-        stored_location_for(resource) || list_order_path(resource)
+    stored_location_for(resource) || list_order_path(resource)
   end
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)

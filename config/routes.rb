@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   	get 'customers/sign_up/:id/show', to: 'devise/registrations#show', as: 'show_registration'
   	post 'customers/sign_up/:id/show', to: 'devise/registrations#show'
   end
-  #devise_for :customers
+  
   get 'welcome/index'
-	resources :customers
+  	resources :customers
 	resources :items
 	get 'items/:id/modify', to: 'items#modify', as: 'modify_item'
 	patch 'items/:id/modif', to: 'items#modif'

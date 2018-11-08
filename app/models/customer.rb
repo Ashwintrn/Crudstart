@@ -12,6 +12,7 @@ class Customer < ApplicationRecord
                     length: { minimum: 5 }
   validates :phone, presence: true, length: {is: 10}, numericality: { only_integer: true }
 
+  validates :password, length: { in: Devise.password_length }, format: { with: /\A(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[[:^alnum:]])/, multiline: true, message:"Format is incorrect"  }
   #protected
 
   #def configure_permitted_parameters
