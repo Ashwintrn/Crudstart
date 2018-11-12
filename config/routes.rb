@@ -1,5 +1,7 @@
 
 Rails.application.routes.draw do
+  use_doorkeeper 
+
   devise_for :customers, controllers: { registrations: 'customers/registrations', sessions: 'customers/sessions' }
   devise_scope :customer do
   	get 'customers/sign_up/:id/show', to: 'devise/registrations#show', as: 'show_registration'

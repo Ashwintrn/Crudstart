@@ -1,6 +1,10 @@
 class Customer < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  # def authenticate(email,password)
+  #   customer = Customer.find_for_authentication(email: email)
+  #   customer.try(:valid_password?, password) ? customer : nil
+  # end
   has_many :orders
   has_many :items, through: :orders
   devise :database_authenticatable, :registerable,
