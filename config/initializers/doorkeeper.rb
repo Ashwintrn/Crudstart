@@ -10,16 +10,18 @@ Doorkeeper.configure do
     #Customer.find_by_id(session[:customer_id]) || redirect_to(routes.new_customer_session_url)
   end
 
-  # resource_owner_from_credentials do |routes|
-  #   customer = Customer.find_for_database_authentication(:username => params[:username])
-  #   if customer && customer.valid_for_authentication? { customer.valid_password?(params[:password]) }
-  #     customer
-  #   end
-  # end
+  resource_owner_from_credentials do |routes|
+    customer = Customer.find_for_database_authentication(:email => params[:email])
+    if customer && customer.valid_for_authentication? { customer.valid_password?(params[:password]) }
+      customer
+    end
+  end
 
-  # skip_authorization do
-  #   true
-  # end
+  grant_flows %w(password)
+  
+  skip_authorization do
+    true
+  end
   # If you didn't skip applications controller from Doorkeeper routes in your application routes.rb
   # file then you need to declare this block in order to restrict access to the web interface for
   # adding oauth authorized applications. In other case it will return 403 Forbidden response
@@ -230,3 +232,4 @@ Doorkeeper.configure do
   #
   # realm "Doorkeeper"
 end
+

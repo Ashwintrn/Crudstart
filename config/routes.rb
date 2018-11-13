@@ -1,6 +1,8 @@
 
 Rails.application.routes.draw do
-  use_doorkeeper 
+  use_doorkeeper do 
+  	skip_controllers :application, :authorized_applications
+  end
 
   devise_for :customers, controllers: { registrations: 'customers/registrations', sessions: 'customers/sessions' }
   devise_scope :customer do
