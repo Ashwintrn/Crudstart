@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+	#	before_action :doorkeeper_authorize!
 	def index
 		@order = Order.all
 	end

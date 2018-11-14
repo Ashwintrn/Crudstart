@@ -2,7 +2,7 @@
 
 class Customers::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
-  
+  before_action :doorkeeper_authorize!
   # GET /resource/sign_in
   def new
     super
@@ -10,6 +10,7 @@ class Customers::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
+    # byebug
     @customer = Customer.find_by(email: params[:customer][:email])
     if @customer != nil
       if @customer.valid_password?(params[:customer][:password])
@@ -23,6 +24,8 @@ class Customers::SessionsController < Devise::SessionsController
       reset_session
       redirect_to '/'
     end
+    #redirect_to list_order_path(resource)
+    #super
   end
 
   # DELETE /resource/sign_out
