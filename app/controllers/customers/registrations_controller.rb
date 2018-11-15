@@ -4,8 +4,8 @@ class Customers::RegistrationsController < Devise::RegistrationsController
   #before_action :configure_sign_up_params, only: [:create], if: :devise_controller?
   # before_action :configure_account_update_params, only: [:update]
   # respond_to :json
-  before_action :doorkeeper_authorize!
-  doorkeeper_for :all
+  #before_action :doorkeeper_authorize!
+  #doorkeeper_for :all
   #skip_before_action :doorkeeper_authorize!
   # GET /resource/sign_up
 

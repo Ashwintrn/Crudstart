@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-	before_action :doorkeeper_authorize!
+#	before_action :doorkeeper_authorize!
 
 #   respond_to :json, :html
 #	before_action :authenticate_customer! , except: [:index, :list]

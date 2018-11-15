@@ -14,7 +14,10 @@ Doorkeeper.configure do
     customer = Customer.find_for_database_authentication(:email => params[:email])
     if customer && customer.valid_for_authentication? { customer.valid_password?(params[:password]) }
       customer
+    else
+      raise Doorkeeper::Errors::DoorkeeperError
     end
+
   end
 
   grant_flows %w(password)
@@ -56,7 +59,7 @@ Doorkeeper.configure do
   # Access token expiration time (default 2 hours).
   # If you want to disable expiration, set this to nil.
   #
-  # access_token_expires_in 2.hours
+  access_token_expires_in 2.hours
 
   # Assign custom TTL for access tokens. Will be used instead of access_token_expires_in
   # option if defined. `context` has the following properties available
@@ -233,3 +236,4 @@ Doorkeeper.configure do
   # realm "Doorkeeper"
 end
 
+#Doorkeeper::OAuth::ErrorResponse.send :prepend, CustomTokenErrorResponse
