@@ -8,6 +8,7 @@ Doorkeeper.configure do
     # Put your resource owner authentication logic here.
     # Example implementation:
     #Customer.find_by_id(session[:customer_id]) || redirect_to(routes.new_customer_session_url)
+    current_customer || warden.authenticate!(:scope => :customer)
   end
 
   resource_owner_from_credentials do |routes|
@@ -19,8 +20,8 @@ Doorkeeper.configure do
     end
 
   end
-
-  grant_flows %w(password)
+  grant_flows %w(authorization_code implicit password client_credentials)
+  #grant_flows %w(password)
   
   skip_authorization do
     true
@@ -30,16 +31,16 @@ Doorkeeper.configure do
   # adding oauth authorized applications. In other case it will return 403 Forbidden response
   # every time somebody will try to access the admin web interface.
   #
-  # admin_authenticator do
-  #   # Put your admin authentication logic here.
-  #   # Example implementation:
-  #
-  #   if current_customer
-  #     head :forbidden unless current_customer != nil
-  #   else
-  #     redirect_to sign_in_url 
-  #   end
-  # end
+  admin_authenticator do
+    # Put your admin authentication logic here.
+    # Example implementation:
+  
+    if current_customer
+      head :forbidden unless current_customer != nil
+    else
+      redirect_to new_customer_session_url 
+    end
+  end
 
   # If you are planning to use Doorkeeper in Rails 5 API-only application, then you might
   # want to use API mode that will skip all the views management and change the way how
@@ -59,7 +60,7 @@ Doorkeeper.configure do
   # Access token expiration time (default 2 hours).
   # If you want to disable expiration, set this to nil.
   #
-  access_token_expires_in 2.hours
+  access_token_expires_in 5.hours
 
   # Assign custom TTL for access tokens. Will be used instead of access_token_expires_in
   # option if defined. `context` has the following properties available

@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     skip_controllers :application, :authorized_applications
   end
   get 'welcome/index'
-  resources :customers
+  #resources :customers
 	resources :items
 	get 'items/:id/modify', to: 'items#modify', as: 'modify_item'
 	patch 'items/:id/modif', to: 'items#modif'

@@ -8,6 +8,7 @@ class Customers::RegistrationsController < Devise::RegistrationsController
   #doorkeeper_for :all
   #skip_before_action :doorkeeper_authorize!
   # GET /resource/sign_up
+  prepend_before_action :require_no_authentication, only: :cancel
 
   def new
      super

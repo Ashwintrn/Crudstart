@@ -4,6 +4,7 @@ class Customers::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
   #before_action :doorkeeper_authorize!
   # GET /resource/sign_in
+  prepend_before_action :require_no_authentication, only: :cancel
   def new
     super
   end
