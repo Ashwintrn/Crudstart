@@ -1,7 +1,8 @@
 #require 'api_constraints'
 Rails.application.routes.draw do
   namespace :api do
-      resources :customers , defaults: { format: :json }
+      resources :customers ,  defaults: { format: :json }
+      resources :orders
   end
   devise_for :customers, controllers: { registrations: 'customers/registrations', sessions: 'customers/sessions' }
   devise_scope :customer do
