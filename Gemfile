@@ -64,4 +64,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'dotenv-rails'
 gem 'oauth2'
+gem 'omniauth-oauth2'
+gem 'pry'
 #gem 'rails-api'

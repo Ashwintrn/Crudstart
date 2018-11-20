@@ -31,7 +31,8 @@ class Api::OrdersController < ApplicationController
 
 	def create
 	#	@order=current_customer.orders
-		@orders = current_customer.create(params[:@order])
+	byebug
+		@orders = current_customer.order.create(params[:@order])
 		respond_to do |format|
 			format.json { render json: @orders  }
 			format.xml { render file: 'show.xml.builder', content_type: "application/xml" }

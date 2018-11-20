@@ -8,7 +8,7 @@ class Customer < ApplicationRecord
   has_many :orders
   has_many :items, through: :orders
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :omniauthable 
   #attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :profile_name
   #before_commit :configure_permitted_parameters, if: :devise_modules?
   #validates :email, presence: true

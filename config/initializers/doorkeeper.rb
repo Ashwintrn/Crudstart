@@ -7,8 +7,19 @@ Doorkeeper.configure do
     #raise "Please configure doorkeeper resource_owner_authenticator block located in #{__FILE__}"
     # Put your resource owner authentication logic here.
     # Example implementation:
+    #byebug
     #Customer.find_by_id(session[:customer_id]) || redirect_to(routes.new_customer_session_url)
     current_customer || warden.authenticate!(:scope => :customer)
+
+    # @customer = env[:clearance].current_customer
+
+    # unless @customer
+    #   session[:return_to] = request.fullpath
+    #   redirect_to(routes.new_customer_session_url)
+    # end
+
+    # @customer
+
   end
 
   resource_owner_from_credentials do |routes|

@@ -1,4 +1,5 @@
 class Api::CustomersController < ApplicationController
+	before_filter :authenticate_customer!
 	respond_to :json
 
 	def index
