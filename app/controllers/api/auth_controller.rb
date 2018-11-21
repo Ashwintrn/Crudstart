@@ -1,9 +1,9 @@
 class AuthController < ApplicationController
   # This is our new function that comes before Devise's one
-  before_filter :authenticate_customer_from_token!, :except => [:access_token]
+  before_action :authenticate_customer_from_token!, :except => [:access_token]
 
   #before_filter :authenticate_customer!, :except => [:access_token]
-  skip_before_filter :verify_authenticity_token, :only => [:access_token]
+  skip_before_action :verify_authenticity_token, :only => [:access_token]
 
   def authorize
     # Note: this method will be called when the customer
@@ -15,7 +15,7 @@ class AuthController < ApplicationController
     # with a random code and the params[:state]
 
 
-    AccessGrant.prune!
+    #OAuth2::AccessGrant.prune!
     create_hash = {
       client: application,
       state: params[:state]
@@ -26,7 +26,7 @@ class AuthController < ApplicationController
 
   # POST
   def access_token
-    application = Client.authenticate(params[:client_id], params[:client_secret])
+    application = OAuth2::Client.authenticate(params[:client_id], params[:client_secret])
 
     if application.nil?
       render :json => {:error => "Could not find application"}
@@ -58,7 +58,7 @@ class AuthController < ApplicationController
   protected
 
   def application
-    @application ||= Client.find_by_app_id(params[:client_id])
+    @application ||= OAuth2::Client.find_by_app_id(params[:client_id])
   end
 
   private
