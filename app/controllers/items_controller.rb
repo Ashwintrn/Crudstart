@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-	before_action :doorkeeper_authorize!
+	#before_action :doorkeeper_authorize!
 	def index
 		@item = Item.all
 	end
