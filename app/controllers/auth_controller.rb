@@ -1,4 +1,4 @@
-class Api::AuthController < ApplicationController
+class AuthController < ApplicationController
   # This is our new function that comes before Devise's one
   before_action :authenticate_customer_from_token!, :except => [:access_token]
 
@@ -14,7 +14,7 @@ class Api::AuthController < ApplicationController
     # redirecting him back to the params[:redirect_uri]
     # with a random code and the params[:state]
 
-    AccessGrant.prune!
+    self.prune!
     create_hash = {
       client: application,
       state: params[:state]
