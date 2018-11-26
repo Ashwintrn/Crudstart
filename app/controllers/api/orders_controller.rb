@@ -6,7 +6,7 @@ class Api::OrdersController < ApplicationController
 	# 	request.session_options[:skip] = true
 	# end
 	#doorkeeper_for :all
-	before_action :doorkeeper_authorize!
+	#before_action :doorkeeper_authorize!
 	#DISPLAY ALL CUSTOMERS
 	def index 				
 		#@customer = Customer.find(doorkeeper_token.resource_owner_id) 
